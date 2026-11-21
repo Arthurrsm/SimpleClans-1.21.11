@@ -1,8 +1,16 @@
 # SimpleClans – Paper 1.21.11 Port
 
-**This is an unofficial port** of the SimpleClans plugin, adapted for **Paper 1.21.11** servers and built with **Java 21**. It is not maintained by the original author and is not available on Spigot.
+> **This is an unofficial port** of the [SimpleClans](https://github.com/RoinujNosde/SimpleClans) plugin, adapted for **Paper 1.21.11** servers and built with **Java 21**. It is not maintained by the original author.
+>
+> For the official plugin, go to the original project: **[RoinujNosde/SimpleClans](https://github.com/RoinujNosde/SimpleClans)**.
 
-To download this version, use **only** the [Releases](../../releases) section of this repository. Do not use the download links from the original project: they point to older versions that do not work on Paper 1.21.11.
+## Download
+
+**[Go to the Releases page](../../releases)** and download `SimpleClans-1.21.11.jar` from there.
+
+Do not use the download links from the original project. They point to older versions that do not work on Paper 1.21.11.
+
+Place the `.jar` in your server's `plugins/` folder.
 
 ## What changed from the original
 
@@ -14,10 +22,6 @@ To download this version, use **only** the [Releases](../../releases) section of
 - Removed build plugins that only served the original author (javadoc, copying to a test server, git hash).
 
 Supported integrations: Vault, PlaceholderAPI, LuckPerms, WorldGuard (6 and 7), GriefPrevention, Landlord, DiscordSRV, and BungeeCord.
-
-## Download
-
-Download `SimpleClans-1.21.11.jar` from the [Releases](../../releases) section and place it in your server's `plugins/` folder.
 
 ## Before installing
 
@@ -38,7 +42,7 @@ The output file is `target/SimpleClans.jar`. The first build takes a few minutes
 
 ## Credits
 
-The original SimpleClans project and its authors. This port only adapts the code to the current Paper version.
+The original SimpleClans project and its authors: [RoinujNosde/SimpleClans](https://github.com/RoinujNosde/SimpleClans). This port only adapts the code to the current Paper version.
 
 ## License
 
