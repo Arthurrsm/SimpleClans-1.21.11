@@ -1,88 +1,45 @@
-[![SimpleClans Logo](https://i.imgur.com/9vgfVdX.png)](https://www.spigotmc.org/resources/simpleclans.71242/)
+# SimpleClans – Paper 1.21.11 Port
 
-SimpleClans
-==========
+**This is an unofficial port** of the SimpleClans plugin, adapted for **Paper 1.21.11** servers and built with **Java 21**. It is not maintained by the original author and is not available on Spigot.
 
-Full featured clan system for PVP Minecraft Servers!
+To download this version, use **only** the [Releases](../../releases) section of this repository. Do not use the download links from the original project: they point to older versions that do not work on Paper 1.21.11.
 
-[![Build Status](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fci.roinujnosde.me%2Fjob%2FSimpleClans%2F)](https://ci.roinujnosde.me/job/SimpleClans/)
-[![Spiget Downloads](https://img.shields.io/spiget/downloads/71242)](https://www.spigotmc.org/resources/simpleclans.71242/)
-[![Issues](https://img.shields.io/github/issues/RoinujNosde/SimpleClans.svg)](https://github.com/RoinujNosde/SimpleClans/issues)
-[![Crowdin](https://badges.crowdin.net/simpleclans/localized.svg)](https://crowdin.com/project/simpleclans)
-[![Discord](https://img.shields.io/discord/719557355917934613?label=discord&logo=discord)](https://discord.gg/CkNwgdE)
-[![bStats Servers](https://img.shields.io/bstats/servers/7131)](https://bstats.org/plugin/bukkit/SimpleClans/7131)
-[![bStats Players](https://img.shields.io/bstats/players/7131)](https://bstats.org/plugin/bukkit/SimpleClans/7131)
+## What changed from the original
 
+- Built against the Paper 1.21.11 API and Java 21 (the original targets Spigot 1.16.4 and Java 8).
+- XSeries updated to 13.8.0. The old version prevented the plugin from enabling on Paper 1.20.5 and later.
+- `plugin.yml` with `api-version: '1.21'`.
+- Native WorldGuard 7 support restored (`WorldGuardProvider`).
+- Deprecated calls replaced: main-hand item (`getItemInMainHand`) and player head owner (`setOwningPlayer`).
+- Removed build plugins that only served the original author (javadoc, copying to a test server, git hash).
 
-#### Download Link
+Supported integrations: Vault, PlaceholderAPI, LuckPerms, WorldGuard (6 and 7), GriefPrevention, Landlord, DiscordSRV, and BungeeCord.
 
-* [Download from Spigot](https://www.spigotmc.org/resources/simpleclans.71242/)
+## Download
 
-#### Documentation 
+Download `SimpleClans-1.21.11.jar` from the [Releases](../../releases) section and place it in your server's `plugins/` folder.
 
-* [Documentation](https://simpleclans.gitbook.io/simpleclans/)
-* Commands & Permissions
-  * [Permissions](https://simpleclans.gitbook.io/simpleclans/commands-and-permissions/permissions)
-  * [Commands](https://simpleclans.gitbook.io/simpleclans/commands-and-permissions/commands)
-  * [Clan Alliances and Rivalries](https://simpleclans.gitbook.io/simpleclans/commands-and-permissions/aliances-and-rivalries)
-  * [Clan Ranks with Permissions](https://simpleclans.gitbook.io/simpleclans/commands-and-permissions/ranks-with-permissions)
-* How to Setup
-  * [Configuration](https://simpleclans.gitbook.io/simpleclans/how-to-setup/configuration)
-  * [Translation](https://simpleclans.gitbook.io/simpleclans/how-to-setup/translation)
-  * [Clan Member Fee](https://simpleclans.gitbook.io/simpleclans/how-to-setup/member-fee)
-  * [Clan Upkeep](https://simpleclans.gitbook.io/simpleclans/how-to-setup/clan-upkeep)
-  * [Clan name above players head](https://simpleclans.gitbook.io/simpleclans/how-to-setup/clan-below-players-name)
-  * [Clan name on Tablist](https://simpleclans.gitbook.io/simpleclans/how-to-setup/clan-on-tablist)
-* Plugins & Development 
-  * [SimpleClans API Example](https://simpleclans.gitbook.io/simpleclans/other/simpleclans-api)
-  * [PlaceholderAPI Placeholders](https://simpleclans.gitbook.io/simpleclans/other/placeholderapi-support)
-  * [Land Protection Plugins](https://simpleclans.gitbook.io/simpleclans/other/land-claims)
-  
-#### Support & Suggestions
+## Before installing
 
-* [Discord Support](https://discord.gg/CkNwgdE)
-* [Bugs and Suggestions](https://github.com/RoinujNosde/SimpleClans/issues)
+- Back up the `plugins/SimpleClans` folder (config and database).
+- This version runs automatic database migrations (new columns). **You cannot go back to the old `.jar` using the same database.**
 
+## Building from source
 
-#### Developers
+Requirements: JDK 21 and Maven (for example, [Temurin 21](https://adoptium.net/) for Java and [Maven](https://maven.apache.org/) for the build).
 
-Including SimpleClans with Maven:
-```xml
-<repositories>
-    <repository>
-        <id>roinujnosde-repo</id>
-        <url>https://repo.roinujnosde.me/releases/</url>
-    </repository>
-</repositories>
+From the project folder, run:
+
 ```
-```xml
-<dependencies>
-    <dependency>
-        <groupId>net.sacredlabyrinth.phaed.simpleclans</groupId>
-        <artifactId>SimpleClans</artifactId>
-        <version>2.18.1</version> <!-- You can find the latest version at the bottom -->
-        <scope>provided</scope>
-    </dependency>
-</dependencies>
+mvn -B -Dmaven.test.skip=true clean package
 ```
 
-Using Gradle:
-```groovy
-repositories {
-    maven {
-        url  "https://repo.roinujnosde.me/releases/" 
-    }
-}
-dependencies {
-    compileOnly "net.sacredlabyrinth.phaed.simpleclans:SimpleClans:2.18.1"
-}
-```
+The output file is `target/SimpleClans.jar`. The first build takes a few minutes while dependencies download.
 
-Feel free to learn our [Javadoc](https://ci.roinujnosde.me/job/SimpleClans/Javadoc/).
-##### Latest version:
-[![Maven metadata URL](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Frepo.roinujnosde.me%2Freleases%2Fnet%2Fsacredlabyrinth%2Fphaed%2Fsimpleclans%2FSimpleClans%2Fmaven-metadata.xml)](https://repo.roinujnosde.me/#/releases/net/sacredlabyrinth/phaed/simpleclans/SimpleClans)
-##### API Examples
-* [Examples of how to use the API](https://simpleclans.gitbook.io/simpleclans/other/simpleclans-api)
+## Credits
 
+The original SimpleClans project and its authors. This port only adapts the code to the current Paper version.
 
-[![Mikasa Host](https://mikasa.host/images/partners/banners/SimpleClans.gif)](https://mikasa.host/ref/6)
+## License
+
+See the [LICENSE](LICENSE) file.
